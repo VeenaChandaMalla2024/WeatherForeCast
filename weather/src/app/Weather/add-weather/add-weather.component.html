@@ -1,0 +1,52 @@
+<div class="container">
+<div class="card">
+    <div class="card-header">
+       Update  Weather ForeCast
+    </div>
+    <div class="card-body">
+        <form [formGroup]="weatherform" (ngSubmit)="addWeather()">
+            <div class="row">
+                    <div class="col-md-2">
+                        <label class="form-label">Date:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="date" min="{{dateToday() | date:'yyyy-MM-dd'}}" class="form-control" formControlName="ForecastDate" style="border: 1px solid black;"/>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Temperature:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" (blur)="onChangeTemp($event)" formControlName="ForecastTemperature" required="true" style="border: 1px solid black;"/>
+                    </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-2"></div>
+                <div class="col-md-1">
+                    <input type="submit" class="btn btn-danger" value="Submit"/>
+                </div>
+               
+            </div>
+       </form>
+       <div class="row pt-2">
+         <table class="table table-bordered table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>S.No</th>
+                    <th>Date</th>
+                    <th>Temperature</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr *ngFor="let item of lstweatherdetails;let i= index;">
+                    <td>{{i+1}}</td>
+                    <td>{{item.forecastDate | date:'dd/MM/yyyy'}}</td>
+                    <td>{{item.forecastTemperature}}</td>
+                </tr>
+            </tbody>
+         </table>
+       </div>
+
+    </div>
+
+</div>
+</div>

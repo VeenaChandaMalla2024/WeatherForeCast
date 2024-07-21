@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="card">
+       <div class="card-header">
+           Weather ForeCast Details
+       </div>
+       <div class="card-body">
+        <form [formGroup]="weatherform" (ngSubmit)="getWeatherDetails()">
+            <div class="row">
+                <div class="col-md-2">
+                    <label class="form-label">From Date</label>
+                </div>
+                <div class="col-md-3">
+                <input type="date" class="form-control" formControlName="ForecastDate" style="border: 1px solid black;"/>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">To Date</label>
+                </div>
+                <div class="col-md-3">
+                <input type="date" class="form-control" formControlName="ForecastToDate" style="border: 1px solid black;"/>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-2">
+                        <input type="submit" class="btn btn-danger" value="Submit"/>
+                </div>
+            </div>
+        </form>
+   <div class="row pt-2">
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>S.No</th>
+                <th>Date</th>
+                <th>Summary</th>
+                <th>Temperature</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let item of lstweatherdata;let i= index;">
+                <td>{{i+1}}</td>
+                <td>{{item.forecastDate| date:'dd/MM/yyyy'}}</td>
+                <td>{{item.forecastSummary}}</td>
+                <td>{{item.forecastTemperature}}</td>
+             
+            </tr>
+        </tbody>
+     </table>
+   </div>
+</div>
+</div>
+</div>
