@@ -22,11 +22,6 @@ weatherform:any;
   getWeatherDetails(){
     this.http.postapi('api/Weather/GetWeatherDetailsBySearch',this.weatherform.getRawValue()).subscribe(res=>{
      this.lstweatherdata=res;
-     console.log(this.lstweatherdata);
-     this.lstweatherdata.forEach(element => {
-      if(element.forecastTemperature!>50  && element.forecastTemperature!<60)
-        element.forecastSummary="Scorching";
-     });
     })
   }
 }
