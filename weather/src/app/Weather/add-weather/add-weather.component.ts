@@ -18,11 +18,19 @@ weatherform:any;
        ForecastTemperature:new FormControl(null),
     })
   }
-  addWeather(){
+  validate():boolean{
     if(!this.weatherform.controls.ForecastTemperature.value){
       alert("Please enter Temperature")
+      return false;
     }
-    else{
+    if(!this.weatherform.controls.ForecastDate.value){
+      alert("Please enter ForecastDate")
+      return false;
+    }
+    return true;
+  }
+  addWeather(){
+    if(this.validate()){
     this.http.postapi('api/Weather/SaveWeatherDetails',this.weatherform.getRawValue()).subscribe(res=>{
       alert('Data Saved Successfully');
       this.getWeatherDetails();
